@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
+import Frase from './components/Frase';
 
 const Contenedor = styled.div`
   display: flex;
@@ -42,13 +43,17 @@ function App() {
 
   const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
   console.log(api); //con await retorna la response
-  const Frase = await api.json();
-  guardarFrase(Frase[0]);
+  const resultado = await api.json();
+  guardarFrase(resultado[0]);
 
   }
 
   return (
     <Contenedor>
+      <Frase 
+        frase={frase}
+      />
+
       <Boton
         onClick={consultarAPI}
       >Frases de Breaking Bad</Boton>
