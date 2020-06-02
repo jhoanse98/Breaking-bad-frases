@@ -39,7 +39,8 @@ const ContenedorFrase = styled.div`
 
 const Frase = ({frase}) => {
 
-    if(Object.keys(frase).length === 0) return null;
+    //if(Object.keys(frase).length === 0) return null; para no ver las quotes iniciales debido a que no hay frases
+    
 
     return ( 
         <ContenedorFrase>
