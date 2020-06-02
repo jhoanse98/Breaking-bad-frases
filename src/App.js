@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
 
 const Contenedor = styled.div`
@@ -23,8 +23,28 @@ const Boton = styled.button`
 
 function App() {
 
-  const consultarAPI = ()=>{
-    console.log("consultando...");
+  //state para las frases
+
+  const[frase, guardarFrase] = useState({});
+
+  const consultarAPI = async ()=>{
+
+    /* FETCH COMO PROMESAS
+    const api = fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+    //fetch funciona con promises
+    //console.log(api); se ve como resultado promise {<pending>}. le falta then
+    const resultado = api.then(respuesta => respuesta.json());
+    resultado.then( frase => console.log(frase));
+
+    */
+
+  //FETCH CON ASYNC AWAIT
+
+  const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+  console.log(api); //con await retorna la response
+  const Frase = await api.json();
+  guardarFrase(Frase[0]);
+
   }
 
   return (
